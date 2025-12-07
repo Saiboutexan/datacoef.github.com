@@ -662,3 +662,33 @@ input[type="tel"]{
     min-width: 200px;
   }
 }
+
+/* =============================== */
+/* HEADER DÉFILANT (AJOUT FINAL) */
+/* =============================== */
+
+.header-block {
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    animation: slideHeader 25s linear infinite;
+    padding: 10px 20px;
+    box-shadow: 0 0 12px rgba(245,196,0,0.45),
+                0 0 22px rgba(245,196,0,0.35);
+    border-bottom: 3px solid var(--gold);
+}
+
+.header-block > * {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+}
+
+@keyframes slideHeader {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.header-block:hover {
+    animation-play-state: paused;
+}
