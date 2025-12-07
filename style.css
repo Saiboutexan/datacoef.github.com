@@ -664,31 +664,60 @@ input[type="tel"]{
 }
 
 /* =============================== */
-/* HEADER DÉFILANT (AJOUT FINAL) */
+/* HEADER PREMIUM DÉFILANT — V3 LUXE */
 /* =============================== */
 
+/* Conteneur global */
 .header-block {
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
     white-space: nowrap;
-    animation: slideHeader 25s linear infinite;
-    padding: 10px 20px;
-    box-shadow: 0 0 12px rgba(245,196,0,0.45),
-                0 0 22px rgba(245,196,0,0.35);
+    padding: 12px 0;
     border-bottom: 3px solid var(--gold);
+    box-shadow: 0 0 15px rgba(245,196,0,0.45),
+                0 0 30px rgba(245,196,0,0.30);
 }
 
-.header-block > * {
+/* Bande défilante */
+.header-marquee {
     display: inline-flex;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
+
+    animation: marqueeSlide 30s linear infinite;
 }
 
-@keyframes slideHeader {
-    0%   { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+/* Duplication fluide */
+.header-marquee > * {
+    margin-right: 40px;
 }
 
+/* Animation infinie */
+@keyframes marqueeSlide {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Glow doré luxe */
 .header-block:hover {
+    box-shadow: 0 0 22px rgba(245,196,0,0.7),
+                0 0 40px rgba(245,196,0,0.55);
+}
+
+.header-marquee:hover {
     animation-play-state: paused;
+}
+
+/* VERSION MOBILE */
+@media (max-width: 700px) {
+
+    .header-marquee {
+        animation: marqueeSlide 18s linear infinite;
+        gap: 25px;
+    }
+
+    /* Sur mobile : éviter pause tactile */
+    .header-marquee:hover {
+        animation-play-state: running;
+    }
 }
